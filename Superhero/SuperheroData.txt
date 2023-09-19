@@ -1,0 +1,82 @@
+-- Insert data into the Heroes table
+INSERT INTO Heroes (name, description, superpower, hero_type)
+VALUES
+    ('Batman', 'The Dark Knight', 'Master Detective', 'Superhero'),
+    ('Catwoman', 'Master Thief', 'Agility and Stealth', 'Supervillain'),
+    ('Joker', 'The Clown Prince of Crime', 'Chaos and Trickery', 'Supervillain'),
+    ('Harley Quinn', 'Psychiatrist Gone Mad', 'Acrobatics and Sledgehammer', 'Supervillain'),
+    ('Superman', 'Man of Steel', 'Super Strength and Flight', 'Superhero'),
+    ('Wonder Woman', 'Amazon Warrior', 'Lasso of Truth and Superhuman Strength', 'Superhero'),
+    ('Green Lantern', 'Ring-Bearer', 'Willpower and Energy Constructs', 'Superhero'),
+    ('The Flash', 'Scarlet Speedster', 'Super Speed and Time Travel', 'Superhero'),
+    ('Lex Luthor', 'Genius Billionaire', 'Intelligence and Resources', 'Supervillain'),
+    ('Poison Ivy', 'Botanical Biochemist', 'Control over Plants', 'Supervillain');
+
+-- Insert sample data into the Locations table
+INSERT INTO Locations (name, description, address, latitude, longitude)
+VALUES
+    ('Metropolis', 'City of Heroes', '123 Hero Lane, Metropolis', 38.8977, -77.0365),
+    ('Themyscira', 'Island Paradise', '1 Paradise Island, Themyscira', 37.9360, -75.0245),
+    ('New York City', 'The Big Apple', '456 Crime Street, NYC', 40.7128, -74.0060),
+    ('Arkham Asylum', 'Mental Institution', '789 Insane Lane, Arkham', 51.5074, -0.1278),
+    ('Central City', 'Home of The Flash', '101 Speedster Road, Central City', 37.7749, -122.4194),
+    ('Gotham City', 'Dark and Gritty', '789 Bat Avenue, Gotham City', 40.7128, -74.0060),
+    ('Paris', 'City of Love', '10 Romance Road, Paris', 48.8566, 2.3522),
+    ('London', 'Foggy and Mysterious', '221B Baker Street, London', 51.5074, -0.1278),
+    ('Tokyo', 'High-Tech Metropolis', '777 Neon Way, Tokyo', 35.682839, 139.759455),
+    ('Moscow', 'Cold and Historic', '123 Red Square, Moscow', 55.755825, 37.617610);
+
+-- Insert sample data into the Organizations table
+INSERT INTO Organizations (name, description, address)
+VALUES
+    ('Justice League', 'Superhero Team', '456 Heroic Way, HQ'),
+    ('Amazons', 'Amazon Warriors', '1 Paradise Island, Themyscira'),
+    ('The Avengers', 'Superhero Team', '123 Stark Tower, NYC'),
+    ('The Legion of Doom', 'Supervillain Team', '666 Villain Ave, Gotham'),
+    ('X-Men', 'Mutant Heroes', '321 X-Mansion Lane, Westchester'),
+    ('Sinister Six', 'Supervillain Alliance', '789 Villain Villa, NYC'),
+    ('Fantastic Four', 'Superhero Family', '4 Fantastic Lane, NYC'),
+    ('Guardians of the Galaxy', 'Interstellar Heroes', '42 Starship Road, Knowhere'),
+    ('The Hand', 'Ninja Clan', '555 Shadow Lane, Tokyo'),
+    ('A.I.M.', 'Scientific Masterminds', '666 Lab Lair, NYC');
+
+-- Insert sample data into the Hero_Organisation intermediary table
+INSERT INTO Hero_Organization (hero_id, org_id)
+VALUES
+    (1, 1), -- Batman in Justice League
+    (2, 2), -- Catwoman with Amazons
+    (3, 1), -- Joker in Justice League
+    (4, 3), -- Harley Quinn in The Avengers
+    (5, 4), -- Superman in The Legion of Doom
+    (6, 3), -- Wonder Woman in The Avengers
+    (7, 1), -- Green Lantern in Justice League
+    (8, 4), -- The Flash in The Legion of Doom
+    (9, 5), -- Lex Luthor in X-Men
+    (10, 6); -- Poison Ivy in Sinister Six
+-- Insert sample data into the Sightings table
+INSERT INTO Sightings (hero_id, location_id, sighting_date)
+VALUES
+    (4, 2, '2023-02-18'),
+    (5, 3, '2023-05-19'),
+    (6, 4, '2023-07-20'),
+    (7, 5, '2023-03-21'),
+    (8, 5, '2023-04-22'),
+    (9, 1, '2023-02-23'),
+    (10, 3,'2023-01-24'),
+    (1, 3, '2023-08-17'),
+    (2, 2, '2023-09-15'),
+    (3, 1, '2023-09-16');
+
+-- Insert sample data into the Hero_Sighting intermediary table
+INSERT INTO Hero_Sighting (sighting_id, hero_id)
+VALUES
+    (1, 1), -- Batman sighting in Metropolis
+    (2, 2), -- Catwoman sighting in Themyscira
+    (3, 3), -- Joker sighting in NYC
+    (4, 4), -- Harley Quinn sighting in Gotham City
+    (5, 5), -- Superman sighting in Metropolis
+    (6, 6), -- Wonder Woman sighting in Themyscira
+    (7, 7), -- Green Lantern sighting in New York City
+    (8, 8), -- The Flash sighting in New York City
+    (9, 9), -- Lex Luthor sighting in London
+    (10, 10); -- Poison Ivy sighting in Tokyo

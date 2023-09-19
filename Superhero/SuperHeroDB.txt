@@ -1,0 +1,64 @@
+-- Drop the database if it exists
+DROP DATABASE IF EXISTS SuperHeroDB;
+
+-- Create the SuperHeroDB database
+CREATE DATABASE SuperHeroDB;
+
+-- Use the SuperHeroDB database
+USE SuperHeroDB;
+
+-- Create the Heroes table with the hero_type column
+CREATE TABLE Heroes (
+    hero_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description VARCHAR(255),
+    superpower VARCHAR(255),
+    hero_type CHAR(50) NOT NULL
+);
+
+-- Create the Locations table
+CREATE TABLE Locations (
+    location_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description VARCHAR(255),
+    address VARCHAR(255),
+    latitude DECIMAL(10, 6),
+    longitude DECIMAL(10, 6)
+);
+
+-- Create the Organizations table
+CREATE TABLE Organizations (
+    org_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description VARCHAR(255),
+    address VARCHAR(255),
+    contact_info VARCHAR(255)
+);
+
+-- Create the Hero_Organisation intermediary table for many-to-many relationship
+CREATE TABLE Hero_Organization (
+    hero_id INT,
+    org_id INT,
+    PRIMARY KEY (hero_id, org_id),
+    FOREIGN KEY (hero_id) REFERENCES Heroes(hero_id),
+    FOREIGN KEY (org_id) REFERENCES Organizations(org_id)
+);
+
+-- Create the Sightings table
+CREATE TABLE Sightings (
+    sighting_id INT AUTO_INCREMENT PRIMARY KEY,
+    hero_id INT,
+    location_id INT,
+    sighting_date DATE,
+    FOREIGN KEY (hero_id) REFERENCES Heroes(hero_id),
+    FOREIGN KEY (location_id) REFERENCES Locations(location_id)
+);
+
+-- Create the Hero_Sighting intermediary table for many-to-many relationship
+CREATE TABLE Hero_Sighting (
+    sighting_id INT NOT NULL,
+    hero_id INT NOT NULL,
+    PRIMARY KEY (sighting_id, hero_id),
+    FOREIGN KEY (sighting_id) REFERENCES Sightings(sighting_id),
+    FOREIGN KEY (hero_id) REFERENCES Heroes(hero_id)
+);
